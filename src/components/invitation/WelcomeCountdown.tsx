@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 
 const WelcomeCountdown = () => {
   // ===== EDIT TEKS DAN TANGGAL DI SINI =====
-  const welcomeTitle = "Selamat Datang di Momen Istimewa Kami";
-  const welcomeText = "Mari bersama merayakan pencapaian dan langkah baru menuju masa depan yang gemilang";
+  const welcomeTitle = "𝓚𝓪𝓶𝓲 𝓜𝓮𝓷𝓰𝓾𝓷𝓭𝓪𝓷𝓰 𝓐𝓷𝓭𝓪 ";
+  const welcomeText = "Perayaan Pelepasan Kelas XII SMA Citra Kasih Samarinda – Angkatan 2025";
   const eventDate = new Date("2025-07-15T09:00:00"); // Ganti tanggal acara di sini
   // ==========================================
 
@@ -36,7 +36,7 @@ const WelcomeCountdown = () => {
   ];
 
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-6 py-20 bg-floral-pattern relative">
+   <section className="min-h-screen flex flex-col items-center justify-center px-6 py-20 bg-floral-pattern relative">
       <motion.div
         className="w-20 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mb-8"
         initial={{ scaleX: 0 }}

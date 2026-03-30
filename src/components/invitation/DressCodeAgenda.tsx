@@ -14,7 +14,7 @@ const DressCodeAgenda = () => {
     { time: "", activity: "Prosesi Pelepasan" },
     { time: "", activity: "Apresiasi Siswa & Guru" },
     { time: "", activity: "Foto Bersama" },
-    { time: "", activity: "Rahmah Tahmah & Makan Malam" },
+    { time: "", activity: "Rahmah Tamah & Makan Malam" },
   ];
   // ========================================
 
