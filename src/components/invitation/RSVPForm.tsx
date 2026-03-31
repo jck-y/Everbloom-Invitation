@@ -37,13 +37,12 @@ const handleSubmit = async (e: React.FormEvent) => {
   };
 
   try {
-    await fetch("https://script.google.com/macros/s/AKfycbyD7aiq_-CqeyEh5pHyGk7NRdInwtdvJnas1a6vrPix8Fs6w4gaFZC6xCeRlkVtwhYm/exec", {
+    const formData = new URLSearchParams();
+    formData.append("data", JSON.stringify(entry));
+
+    await fetch("https://script.google.com/macros/s/AKfycbxRnY-8EXgYPAI2BIjwlpoHrmsFUQSdEvefysNOlmgNUarG2cJBUWs1LDVlEG5ySKJH/exec", {
       method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(entry),
+      body: formData,
     });
 
     onSubmit(entry);
@@ -53,6 +52,7 @@ const handleSubmit = async (e: React.FormEvent) => {
   } finally {
     setIsSubmitting(false);
   }
+
   setNama("");
   setUcapan("");
   setKehadiran("Hadir");

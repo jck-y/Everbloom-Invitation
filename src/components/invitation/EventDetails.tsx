@@ -4,8 +4,8 @@ import { Clock, Calendar, MapPin, Navigation } from "lucide-react";
 const EventDetails = () => {
   // ===== EDIT DETAIL ACARA DI SINI =====
   const time = "15:00 WITA - Done";
-  const date = "26 May 2025";
-  const location = "Hotel Aston";
+  const date = "26 May 2026";
+  const location = "Ballroom ASTON Samarinda";
   const address = "Jl. Pangeran Hidayatullah, Pelabuhan, Kec. Samarinda Kota, Kota Samarinda, Kalimantan Timur 75242";
   const mapsUrl = "https://maps.google.com/?q=-0.5024684,117.1548013"; 
   // =====================================

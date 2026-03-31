@@ -3,14 +3,29 @@ import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import type { RSVPEntry } from "./RSVPForm";
 
-interface WishesSliderProps {
-  wishes: RSVPEntry[];
-}
-
-const WishesSlider = ({ wishes }: WishesSliderProps) => {
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxRnY-8EXgYPAI2BIjwlpoHrmsFUQSdEvefysNOlmgNUarG2cJBUWs1LDVlEG5ySKJH/exec"
+const WishesSlider = () => {
+  const [wishes, setWishes] = useState<RSVPEntry[]>([]);
   const [current, setCurrent] = useState(0);
-  const filteredWishes = wishes.filter((w) => w.ucapan.trim().length > 0);
 
+  const filteredWishes = wishes.filter((w) => w.ucapan?.trim().length > 0);
+
+  // 🔄 Fetch data dari Apps Script
+  useEffect(() => {
+    const fetchData = () => {
+      fetch(SCRIPT_URL)
+        .then((res) => res.json())
+        .then((data) => setWishes(data))
+        .catch((err) => console.error("Fetch error:", err));
+    };
+
+    fetchData(); // initial fetch
+
+    const interval = setInterval(fetchData, 5000); // auto update tiap 5 detik
+    return () => clearInterval(interval);
+  }, []);
+
+  // 🔄 Auto slide
   useEffect(() => {
     if (filteredWishes.length <= 1) return;
     const interval = setInterval(() => {
@@ -29,18 +44,23 @@ const WishesSlider = ({ wishes }: WishesSliderProps) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            Ucapan & Doa
+            Messages & Prayers
           </motion.h2>
           <p className="text-muted-foreground italic font-body">
-            Belum ada ucapan. Jadilah yang pertama mengirim ucapan melalui RSVP di atas! ✨
+            No messages yet. Be the first to send your wishes via RSVP above! ✨
           </p>
         </div>
       </section>
     );
   }
 
-  const goNext = () => setCurrent((prev) => (prev + 1) % filteredWishes.length);
-  const goPrev = () => setCurrent((prev) => (prev - 1 + filteredWishes.length) % filteredWishes.length);
+  const goNext = () =>
+    setCurrent((prev) => (prev + 1) % filteredWishes.length);
+
+  const goPrev = () =>
+    setCurrent(
+      (prev) => (prev - 1 + filteredWishes.length) % filteredWishes.length
+    );
 
   return (
     <section className="py-20 px-6 bg-floral-pattern">
@@ -51,7 +71,7 @@ const WishesSlider = ({ wishes }: WishesSliderProps) => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Ucapan & Doa
+          Messages & Prayers
         </motion.h2>
 
         <div className="relative">
@@ -76,13 +96,19 @@ const WishesSlider = ({ wishes }: WishesSliderProps) => {
 
           {filteredWishes.length > 1 && (
             <div className="flex justify-center items-center gap-4 mt-6">
-              <button onClick={goPrev} className="p-2 rounded-full bg-card/60 border border-border text-muted-foreground hover:text-foreground transition-colors">
+              <button
+                onClick={goPrev}
+                className="p-2 rounded-full bg-card/60 border border-border text-muted-foreground hover:text-foreground transition-colors"
+              >
                 <ChevronLeft className="w-4 h-4" />
               </button>
               <span className="text-xs text-muted-foreground font-body">
                 {current + 1} / {filteredWishes.length}
               </span>
-              <button onClick={goNext} className="p-2 rounded-full bg-card/60 border border-border text-muted-foreground hover:text-foreground transition-colors">
+              <button
+                onClick={goNext}
+                className="p-2 rounded-full bg-card/60 border border-border text-muted-foreground hover:text-foreground transition-colors"
+              >
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>
@@ -97,12 +123,12 @@ const WishesSlider = ({ wishes }: WishesSliderProps) => {
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
         >
-          <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-6" />
-          <p className="text-xs text-muted-foreground/60 tracking-[0.3em] uppercase font-body">
+          <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-6  text-[#fdfdfd]" />
+          <p className="text-xs text-muted-foreground/60 tracking-[0.3em] uppercase font-body  text-[#fdfdfd]">
             Everbloom Boldly Forward
           </p>
-          <p className="text-xs text-muted-foreground/40 mt-2 font-body">
-            Penamatan Kelas XII • 2025
+          <p className="text-xs text-muted-foreground/40 mt-2 font-body  text-[#fdfdfd]">
+            Graduation Class XII • 2025
           </p>
         </motion.div>
       </div>
