@@ -5,10 +5,8 @@ interface OpeningScreenProps {
 }
 
 const OpeningScreen = ({ onOpen }: OpeningScreenProps) => {
-  // ===== EDIT TEKS DI SINI =====
-  const title = "Penamatan Kelas XII";
-  const greeting = "Dengan penuh rasa syukur, kami mengundang Anda untuk hadir dalam acara penamatan kami";
-  // ==============================
+  const title = "GRADUATION CLASS XII";
+  const greeting = "We are grateful to invite you to attend our graduation ceremony";
 
   return (
     <motion.div
@@ -34,7 +32,7 @@ const OpeningScreen = ({ onOpen }: OpeningScreenProps) => {
       </motion.p>
 
       <motion.h1
-        className="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-gradient-gold text-center mb-6 leading-tight"
+        className="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-gradient-gold text-center mb-6 leading-tight "
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6, duration: 0.8 }}
@@ -67,7 +65,7 @@ const OpeningScreen = ({ onOpen }: OpeningScreenProps) => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.97 }}
       >
-        Buka Undangan
+        Open Invitation
       </motion.button>
 
       {/* Floating particles */}

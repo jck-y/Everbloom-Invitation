@@ -3,11 +3,11 @@ import { Clock, Calendar, MapPin, Navigation } from "lucide-react";
 
 const EventDetails = () => {
   // ===== EDIT DETAIL ACARA DI SINI =====
-  const time = "09:00 WITA - Selesai";
-  const date = "15 Juli 2025";
-  const location = "Aula Gedung Serbaguna";
-  const address = "Jl. Pendidikan No. 1, Kota Anda";
-  const mapsUrl = "https://maps.google.com/?q=-8.123,115.123"; // Ganti dengan URL Google Maps
+  const time = "15:00 WITA - Done";
+  const date = "26 May 2025";
+  const location = "Hotel Aston";
+  const address = "Jl. Pangeran Hidayatullah, Pelabuhan, Kec. Samarinda Kota, Kota Samarinda, Kalimantan Timur 75242";
+  const mapsUrl = "https://maps.google.com/?q=-0.5024684,117.1548013"; 
   // =====================================
 
   const items = [
@@ -25,7 +25,7 @@ const EventDetails = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Detail Acara
+          Event Details
         </motion.h2>
 
         <div className="space-y-6">
@@ -50,7 +50,7 @@ const EventDetails = () => {
         </div>
 
         <motion.p
-          className="text-sm text-muted-foreground text-center mt-4 italic"
+          className="text-sm text-muted-foreground text-center mt-4 text-[#fdfdfd] italic"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -73,7 +73,7 @@ const EventDetails = () => {
             className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-teal text-foreground font-display tracking-wider hover:brightness-110 transition-all shadow-lg shadow-teal/20"
           >
             <Navigation className="w-4 h-4" />
-            Buka Maps
+            Location Maps
           </a>
         </motion.div>
       </div>

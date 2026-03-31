@@ -2,11 +2,10 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const WelcomeCountdown = () => {
-  // ===== EDIT TEKS DAN TANGGAL DI SINI =====
-  const welcomeTitle = "𝓚𝓪𝓶𝓲 𝓜𝓮𝓷𝓰𝓾𝓷𝓭𝓪𝓷𝓰 𝓐𝓷𝓭𝓪 ";
-  const welcomeText = "Perayaan Pelepasan Kelas XII SMA Citra Kasih Samarinda – Angkatan 2025";
-  const eventDate = new Date("2025-07-15T09:00:00"); // Ganti tanggal acara di sini
-  // ==========================================
+
+  const welcomeTitle = "We Invite You";
+  const welcomeText = "Graduation Ceremony for the Class of 2025 at Citra Kasih High School, Samarinda";
+  const eventDate = new Date("2026-05-26T15:00:00"); 
 
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
@@ -46,7 +45,7 @@ const WelcomeCountdown = () => {
       />
 
       <motion.h2
-        className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-gradient-gold text-center mb-6"
+        className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-gradient-gold text-center mb-6"style={{ fontFamily: "Great Vibes" }}
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -56,7 +55,7 @@ const WelcomeCountdown = () => {
       </motion.h2>
 
       <motion.p
-        className="text-base sm:text-lg text-muted-foreground text-center max-w-lg mb-14 font-body italic"
+        className="text-base sm:text-lg text-muted-foreground text-center max-w-lg mb-14 font-medium font-body text-[#fdfdfd] italic"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

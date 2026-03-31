@@ -8,13 +8,13 @@ const DressCodeAgenda = () => {
 
   // ===== EDIT RANGKAIAN ACARA DI SINI =====
   const agenda = [
-    { time: "", activity: "Pembukaan & Doa" },
-    { time: "", activity: "Sambutan-Sambutan" },
-    { time: "", activity: "Penampilan Siswa" },
-    { time: "", activity: "Prosesi Pelepasan" },
-    { time: "", activity: "Apresiasi Siswa & Guru" },
-    { time: "", activity: "Foto Bersama" },
-    { time: "", activity: "Rahmah Tamah & Makan Malam" },
+    { time: "", activity: "Opening & Prayer" },
+    { time: "", activity: "Welcome Remarks" },
+    { time: "", activity: "Student Performances" },
+    { time: "", activity: "Graduation Ceremony" },
+    { time: "", activity: "Awards for Students & Teachers" },
+    { time: "", activity: "Group Photo" },
+    { time: "", activity: "Reception & Dinner" },
   ];
   // ========================================
 
@@ -32,7 +32,7 @@ const DressCodeAgenda = () => {
             <Shirt className="w-6 h-6 text-accent" />
           </div>
           <h2 className="text-3xl sm:text-4xl font-display font-bold text-gradient-gold mb-4">
-            Dress Code
+            Event Schedule
           </h2>
           <p className="text-xl font-display text-foreground mb-2">{dressCode}</p>
         </motion.div>
@@ -47,7 +47,7 @@ const DressCodeAgenda = () => {
           >
             <ListChecks className="w-5 h-5 text-accent" />
             <h2 className="text-3xl sm:text-4xl font-display font-bold text-gradient-gold">
-              Rangkaian Acara
+              Event Schedule
             </h2>
           </motion.div>
 

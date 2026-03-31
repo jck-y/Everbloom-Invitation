@@ -8,6 +8,7 @@ import DressCodeAgenda from "@/components/invitation/DressCodeAgenda";
 import RSVPForm from "@/components/invitation/RSVPForm";
 import WishesSlider from "@/components/invitation/WishesSlider";
 import VideoBackground from "@/components/invitation/VideoBackground";
+import MusicPlayer from "@/components/invitation/MusicPlayer";
 import type { RSVPEntry } from "@/components/invitation/RSVPForm";
 
 const Index = () => {
@@ -23,6 +24,7 @@ const Index = () => {
   return (
     <div className="min-h-screen overflow-x-hidden">
       <VideoBackground />
+      <MusicPlayer/>
       <AnimatePresence>
         {!isOpened && <OpeningScreen onOpen={handleOpen} />}
       </AnimatePresence>

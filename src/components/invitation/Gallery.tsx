@@ -27,7 +27,7 @@ const Gallery = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Galeri
+          Gallery
         </motion.h2>
         <motion.p
           className="text-sm text-muted-foreground text-center mb-12 italic"
@@ -39,19 +39,17 @@ const Gallery = () => {
           Kenangan indah bersama
         </motion.p>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+        <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide -mx-6 px-6">
           {displayPhotos.map((photo, i) => (
             <motion.div
               key={i}
-              className={`relative overflow-hidden rounded-2xl border border-border ${
-                i === 0 ? "col-span-2 row-span-2" : ""
-              }`}
+              className="relative flex-shrink-0 w-56 sm:w-64 overflow-hidden rounded-2xl border border-border snap-center"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
             >
-              <div className={`${i === 0 ? "aspect-square" : "aspect-square"} bg-card/60 backdrop-blur-sm flex items-center justify-center`}>
+              <div className="aspect-[3/4] bg-card/60 backdrop-blur-sm flex items-center justify-center">
                 {photo ? (
                   <img
                     src={photo}
