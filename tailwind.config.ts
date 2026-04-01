@@ -14,7 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-      script: ["Great Vibes", "cursive"],
+        script: ["Great Vibes", "cursive"],
+        heading: ["Cardo", "serif"],
+        body: ["Inter", "sans-serif"],
     },
       colors: {
         border: "hsl(var(--border))",

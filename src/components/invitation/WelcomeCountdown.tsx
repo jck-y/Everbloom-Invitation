@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 const WelcomeCountdown = () => {
 
-  const welcomeTitle = "We Invite You";
+  const welcomeTitle = "WE INVITE YOU";
   const welcomeText = "Graduation Ceremony for the Class of 2026 Citra Kasih Senior High School Samarinda";
   const eventDate = new Date("2026-05-26T15:00:00"); 
 
@@ -45,7 +45,7 @@ const WelcomeCountdown = () => {
       />
 
       <motion.h2
-        className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-gradient-gold text-center mb-6"style={{ fontFamily: "Great Vibes" }}
+        className="text-5xl sm:text-6xl md:text-7xl leading-[1.3] font-heading font-bold text-gradient-gold text-center mb-6"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}

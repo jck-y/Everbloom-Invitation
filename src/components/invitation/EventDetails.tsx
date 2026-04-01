@@ -20,12 +20,12 @@ const EventDetails = () => {
     <section className="py-20 px-6 bg-floral-pattern">
       <div className="max-w-lg mx-auto">
         <motion.h2
-          className="text-3xl sm:text-4xl font-display font-bold text-gradient-gold text-center mb-12"
+          className="text-3xl sm:text-4xl font-heading font-bold text-gradient-gold text-center mb-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Event Details
+          EVENT DETAILS
         </motion.h2>
 
         <div className="space-y-6">
@@ -70,7 +70,7 @@ const EventDetails = () => {
             href={mapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-teal text-foreground font-display tracking-wider hover:brightness-110 transition-all shadow-lg shadow-teal/20"
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-teal text-foreground font-display tracking-wider hover:brightness-110 transition-all shadow-lg shadow-teal/20 "
           >
             <Navigation className="w-4 h-4" />
             Location Maps

@@ -64,7 +64,7 @@ const handleSubmit = async (e: React.FormEvent) => {
     <section className="py-20 px-6 bg-floral-pattern">
       <div className="max-w-lg mx-auto">
         <motion.h2
-          className="text-3xl sm:text-4xl font-display font-bold text-gradient-gold text-center mb-4"
+          className="text-3xl sm:text-4xl font-heading font-bold text-gradient-gold text-center mb-4"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

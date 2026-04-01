@@ -39,12 +39,12 @@ const WishesSlider = () => {
       <section className="py-20 px-6 bg-floral-pattern">
         <div className="max-w-lg mx-auto text-center">
           <motion.h2
-            className="text-3xl sm:text-4xl font-display font-bold text-gradient-gold mb-6"
+            className="text-3xl sm:text-4xl font-heading font-bold text-gradient-gold mb-6"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            Messages & Prayers
+            MESSAGES & PRAYERS
           </motion.h2>
           <p className="text-muted-foreground italic font-body">
             No messages yet. Be the first to send your wishes via RSVP above! ✨
@@ -66,12 +66,12 @@ const WishesSlider = () => {
     <section className="py-20 px-6 bg-floral-pattern">
       <div className="max-w-lg mx-auto">
         <motion.h2
-          className="text-3xl sm:text-4xl font-display font-bold text-gradient-gold text-center mb-12"
+          className="text-3xl sm:text-4xl font-heading font-bold text-gradient-gold text-center mb-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Messages & Prayers
+          MESSAGES & PRAYERS
         </motion.h2>
 
         <div className="relative">

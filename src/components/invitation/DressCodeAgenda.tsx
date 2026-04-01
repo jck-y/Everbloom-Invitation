@@ -31,8 +31,8 @@ const DressCodeAgenda = () => {
           <div className="w-14 h-14 rounded-2xl bg-accent/15 flex items-center justify-center mx-auto mb-5">
             <Shirt className="w-6 h-6 text-accent" />
           </div>
-          <h2 className="text-3xl sm:text-4xl font-display font-bold text-gradient-gold mb-4">
-            Event Schedule
+          <h2 className="text-3xl sm:text-4xl font-heading font-bold text-gradient-gold mb-4">
+            DRESSCODE
           </h2>
           <p className="text-xl font-display text-foreground mb-2">{dressCode}</p>
         </motion.div>
@@ -46,8 +46,8 @@ const DressCodeAgenda = () => {
             viewport={{ once: true }}
           >
             <ListChecks className="w-5 h-5 text-accent" />
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-gradient-gold">
-              Event Schedule
+            <h2 className="text-3xl sm:text-4xl font-heading font-bold text-gradient-gold">
+              EVENT SCHEDULE
             </h2>
           </motion.div>
 
