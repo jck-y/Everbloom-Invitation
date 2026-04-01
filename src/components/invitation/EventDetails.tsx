@@ -11,9 +11,9 @@ const EventDetails = () => {
   // =====================================
 
   const items = [
-    { icon: Clock, label: "Waktu", value: time },
-    { icon: Calendar, label: "Tanggal", value: date },
-    { icon: MapPin, label: "Lokasi", value: location },
+    { icon: Clock, label: "Time", value: time },
+    { icon: Calendar, label: "Date", value: date },
+    { icon: MapPin, label: "Location", value: location },
   ];
 
   return (

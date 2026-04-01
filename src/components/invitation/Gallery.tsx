@@ -36,7 +36,7 @@ const Gallery = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          Kenangan indah bersama
+          Beautiful Memories Together
         </motion.p>
 
         <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide -mx-6 px-6">

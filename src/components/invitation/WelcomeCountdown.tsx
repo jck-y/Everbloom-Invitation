@@ -28,10 +28,10 @@ const WelcomeCountdown = () => {
   }, []);
 
   const timeUnits = [
-    { label: "Hari", value: timeLeft.days },
-    { label: "Jam", value: timeLeft.hours },
-    { label: "Menit", value: timeLeft.minutes },
-    { label: "Detik", value: timeLeft.seconds },
+    { label: "Day", value: timeLeft.days },
+    { label: "Hour", value: timeLeft.hours },
+    { label: "Minute", value: timeLeft.minutes },
+    { label: "Second", value: timeLeft.seconds },
   ];
 
   return (

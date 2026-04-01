@@ -91,30 +91,30 @@ const handleSubmit = async (e: React.FormEvent) => {
           transition={{ delay: 0.3 }}
         >
           <div>
-            <label className="block text-sm text-muted-foreground mb-2 font-display tracking-wider">Nama</label>
+            <label className="block text-sm text-muted-foreground mb-2 font-display tracking-wider">Name</label>
             <input
               type="text"
               value={nama}
               onChange={(e) => setNama(e.target.value)}
               required
               className="w-full bg-card/60 backdrop-blur-sm border border-border rounded-xl px-4 py-3 text-foreground font-body placeholder:text-muted-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all"
-              placeholder="Masukkan nama Anda"
+              placeholder="Input Your Name Here"
             />
           </div>
 
           <div>
-            <label className="block text-sm text-muted-foreground mb-2 font-display tracking-wider">Ucapan</label>
+            <label className="block text-sm text-muted-foreground mb-2 font-display tracking-wider">Message</label>
             <textarea
               value={ucapan}
               onChange={(e) => setUcapan(e.target.value)}
               rows={3}
               className="w-full bg-card/60 backdrop-blur-sm border border-border rounded-xl px-4 py-3 text-foreground font-body placeholder:text-muted-foreground/40 focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all resize-none"
-              placeholder="Tulis ucapan Anda..."
+              placeholder="Write your message..."
             />
           </div>
           <div>
   <label className="block text-sm text-muted-foreground mb-2 font-display tracking-wider">
-    Jumlah Tamu
+    Number of Guests
   </label>
   <input
     type="number"
@@ -125,14 +125,14 @@ const handleSubmit = async (e: React.FormEvent) => {
   />
 </div>
           <div>
-            <label className="block text-sm text-muted-foreground mb-2 font-display tracking-wider">Kehadiran</label>
+            <label className="block text-sm text-muted-foreground mb-2 font-display tracking-wider">Presence</label>
             <select
               value={kehadiran}
               onChange={(e) => setKehadiran(e.target.value)}
               className="w-full bg-card/60 backdrop-blur-sm border border-border rounded-xl px-4 py-3 text-foreground font-body focus:outline-none focus:ring-2 focus:ring-accent/50 transition-all appearance-none cursor-pointer"
             >
-              <option value="Hadir">Hadir</option>
-              <option value="Tidak Hadir">Tidak Hadir</option>
+              <option value="Hadir">Presence</option>
+              <option value="Tidak Hadir">Absent</option>
             </select>
           </div>
 
@@ -144,7 +144,7 @@ const handleSubmit = async (e: React.FormEvent) => {
             whileTap={{ scale: 0.98 }}
           >
             <Send className="w-4 h-4" />
-            {isSubmitting ? "Mengirim..." : "Kirim RSVP"}
+            {isSubmitting ? "Sending..." : "Send RSVP"}
           </motion.button>
 
           {submitted && (
@@ -153,7 +153,7 @@ const handleSubmit = async (e: React.FormEvent) => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
             >
-              ✨ Terima kasih! RSVP Anda telah terkirim.
+              ✨ Thank you! Your RSVP has been sent.
             </motion.p>
           )}
         </motion.form>
