@@ -128,7 +128,7 @@ const WishesSlider = () => {
             Everbloom Boldly Forward
           </p>
           <p className="text-xs text-muted-foreground/40 mt-2 font-body  text-[#fdfdfd]">
-            Graduation Class XII • 2025
+            Graduation Class XII • 2026
           </p>
         </motion.div>
       </div>
