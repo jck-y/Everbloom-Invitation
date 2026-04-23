@@ -30,7 +30,7 @@ const MusicPlayer = () => {
 
   return (
     <>
-      <audio ref={audioRef} src={musicSrc} loop preload="auto" />
+      <audio ref={audioRef} src={musicSrc} loop preload="none" />
       <button
         onClick={toggleMute}
         className="fixed top-4 right-4 z-50 p-3 rounded-full bg-black/40 backdrop-blur-sm border border-white/20 text-white hover:bg-black/60 transition-all duration-300"

@@ -19,7 +19,12 @@ const Gallery = () => {
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [fullscreen, setFullscreen] = useState(false);
+  const [loadedIndexes, setLoadedIndexes] = useState<Set<number>>(new Set([0]));
 
+    const handleThumbClick = (i: number) => {
+    setActiveIndex(i);
+    setLoadedIndexes(prev => new Set([...prev, i, i + 1])); 
+  };
   const thumbsRef = useRef<HTMLDivElement>(null);
 
   const handleDownload = async (e: React.MouseEvent) => {
@@ -45,7 +50,7 @@ const Gallery = () => {
     }
   };
 
-  return (
+return (
     <section className="py-20 px-6 bg-floral-pattern">
       <div className="max-w-2xl mx-auto">
         {/* Heading */}
@@ -53,7 +58,7 @@ const Gallery = () => {
           className="text-3xl sm:text-4xl font-heading font-bold text-gradient-gold text-center mb-4"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           GALLERY
         </motion.h2>
@@ -61,67 +66,57 @@ const Gallery = () => {
           className="text-sm text-muted-foreground text-center mb-8 italic"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ delay: 0.2 }}
         >
           Beautiful Memories Together
         </motion.p>
 
-        {/* Preview Besar */}
-        <motion.div
+        {/* Preview Besar - tanpa AnimatePresence, pakai CSS transition */}
+        <div
           className="relative mx-auto mb-3 rounded-2xl overflow-hidden border border-border cursor-zoom-in group"
-          style={{ maxWidth: "420px" }}
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
+          style={{ maxWidth: "420px", minHeight: "200px" }}
           onClick={() => displayPhotos[activeIndex] && setFullscreen(true)}
-          whileTap={{ scale: 0.98 }}
         >
-          <AnimatePresence mode="wait">
-            {displayPhotos[activeIndex] ? (
-              <motion.img
-                key={activeIndex}
-                src={displayPhotos[activeIndex]}
-                alt={`Preview ${activeIndex + 1}`}
-                className="w-full h-auto object-contain block"
-                fetchPriority="high"
-                initial={{ opacity: 0, scale: 1.04 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.97 }}
-                transition={{ duration: 0.35 }}
+          {displayPhotos.map((photo, i) =>
+            photo ? (
+              <img
+                key={i}
+                src={loadedIndexes.has(i) ? photo : undefined}
+                alt={`Preview ${i + 1}`}
+                className={`w-full h-auto object-contain block transition-opacity duration-300 ${
+                  i === activeIndex
+                    ? "opacity-100 relative"
+                    : "opacity-0 absolute inset-0 pointer-events-none"
+                }`}
+                loading={i === 0 ? "eager" : "lazy"}
+                decoding="async"
+                fetchPriority={i === 0 ? "high" : "low"}
               />
-            ) : (
-              <div className="w-full py-24 flex items-center justify-center text-muted-foreground/30">
-                <span className="text-sm">Foto {activeIndex + 1}</span>
-              </div>
-            )}
-          </AnimatePresence>
+            ) : null
+          )}
 
-          {/* Ikon Expand di pojok kanan bawah */}
+          {/* Ikon Expand */}
           <div className="absolute bottom-3 right-3 bg-black/40 backdrop-blur-sm text-white rounded-lg p-1.5 opacity-70 group-hover:opacity-100 transition-opacity pointer-events-none">
             <Expand size={16} />
           </div>
-        </motion.div>
+        </div>
 
         {/* Thumbnail Strip */}
         <div
           ref={thumbsRef}
-          className="flex gap-2 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-hide -mx-6 px-6"
+          className="flex gap-2 overflow-x-auto overflow-y-hidden pb-2 snap-x snap-mandatory scrollbar-hide -mx-6 px-6"
+          style={{ touchAction: "pan-x" }}
         >
           {displayPhotos.map((photo, i) => (
-            <motion.div
+            <div
               key={i}
-              onClick={() => setActiveIndex(i)}
-              className={`relative flex-shrink-0 w-24 sm:w-28 aspect-square overflow-hidden rounded-xl border-2 snap-start cursor-pointer transition-all duration-200
-                ${i === activeIndex
+              onClick={() => handleThumbClick(i)}
+              className={`relative flex-shrink-0 w-24 sm:w-28 aspect-square overflow-hidden rounded-xl border-2 snap-start cursor-pointer transition-all duration-200 ${
+                i === activeIndex
                   ? "border-amber-600 opacity-100 scale-100"
                   : "border-border opacity-60 scale-95 hover:opacity-80"
-                }`}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: i === activeIndex ? 1 : 0.6, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              whileTap={{ scale: 0.94 }}
+              }`}
             >
               {photo ? (
                 <img
@@ -129,13 +124,14 @@ const Gallery = () => {
                   alt={`Thumb ${i + 1}`}
                   className="w-full h-full object-cover"
                   loading="lazy"
+                  decoding="async"
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center">
                   <span className="text-xs text-muted-foreground/30">{i + 1}</span>
                 </div>
               )}
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
@@ -163,7 +159,10 @@ const Gallery = () => {
             {/* Tombol Tutup */}
             <button
               className="absolute top-5 right-5 w-10 h-10 rounded-full bg-white/10 text-white flex items-center justify-center border border-white/20 hover:bg-white/20 transition"
-              onClick={(e) => { e.stopPropagation(); setFullscreen(false); }}
+              onClick={(e) => {
+                e.stopPropagation();
+                setFullscreen(false);
+              }}
             >
               <X size={18} />
             </button>
