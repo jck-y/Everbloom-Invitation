@@ -3,14 +3,14 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const Gallery = () => {
   const photos: string[] = [
-    "/public/images/images1.png",
-    "/public/images/images2.png",
-    "/public/images/images3.png",
-    "/public/images/images4.png",
-    "/public/images/images5.png",
-    "/public/images/images6.png",
-    "/public/images/images7.png",
-    "/public/images/images8.png",
+    "/images/images1.png",
+    "/images/images2.png",
+    "/images/images3.png",
+    "/images/images4.png",
+    "/images/images5.png",
+    "/images/images6.png",
+    "/images/images7.png",
+    "/images/images8.png",
   ];
   // ==============================
 
