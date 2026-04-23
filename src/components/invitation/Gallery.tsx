@@ -1,16 +1,17 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Expand, Download, X } from "lucide-react";
 
 const Gallery = () => {
   const photos: string[] = [
-    "/images/images1.png",
-    "/images/images2.png",
-    "/images/images3.png",
-    "/images/images4.png",
-    "/images/images5.png",
-    "/images/images6.png",
-    "/images/images7.png",
-    "/images/images8.png",
+    "/images/images1.webp",
+    "/images/images2.webp",
+    "/images/images3.webp",
+    "/images/images4.webp",
+    "/images/images5.webp",
+    "/images/images6.webp",
+    "/images/images7.webp",
+    "/images/images8.webp",
   ];
   // ==============================
 
@@ -18,7 +19,31 @@ const Gallery = () => {
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [fullscreen, setFullscreen] = useState(false);
+
   const thumbsRef = useRef<HTMLDivElement>(null);
+
+  const handleDownload = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const url = displayPhotos[activeIndex];
+    if (!url) return;
+
+    try {
+      const response = await fetch(url);
+      const blob = await response.blob();
+      const blobUrl = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = blobUrl;
+      a.download = `foto-${activeIndex + 1}.png`;
+      a.click();
+      URL.revokeObjectURL(blobUrl);
+    } catch {
+      // fallback jika fetch gagal
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `foto-${activeIndex + 1}.png`;
+      a.click();
+    }
+  };
 
   return (
     <section className="py-20 px-6 bg-floral-pattern">
@@ -42,9 +67,9 @@ const Gallery = () => {
           Beautiful Memories Together
         </motion.p>
 
-        {/* Preview Besar — full tanpa crop */}
+        {/* Preview Besar */}
         <motion.div
-          className="relative mx-auto mb-3 rounded-2xl overflow-hidden border border-border cursor-zoom-in"
+          className="relative mx-auto mb-3 rounded-2xl overflow-hidden border border-border cursor-zoom-in group"
           style={{ maxWidth: "420px" }}
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -59,6 +84,7 @@ const Gallery = () => {
                 src={displayPhotos[activeIndex]}
                 alt={`Preview ${activeIndex + 1}`}
                 className="w-full h-auto object-contain block"
+                fetchPriority="high"
                 initial={{ opacity: 0, scale: 1.04 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.97 }}
@@ -70,9 +96,14 @@ const Gallery = () => {
               </div>
             )}
           </AnimatePresence>
+
+          {/* Ikon Expand di pojok kanan bawah */}
+          <div className="absolute bottom-3 right-3 bg-black/40 backdrop-blur-sm text-white rounded-lg p-1.5 opacity-70 group-hover:opacity-100 transition-opacity pointer-events-none">
+            <Expand size={16} />
+          </div>
         </motion.div>
 
-        {/* Thumbnail Strip — 1:1 square, boleh crop */}
+        {/* Thumbnail Strip */}
         <div
           ref={thumbsRef}
           className="flex gap-2 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-hide -mx-6 px-6"
@@ -97,6 +128,7 @@ const Gallery = () => {
                   src={photo}
                   alt={`Thumb ${i + 1}`}
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center">
@@ -127,11 +159,22 @@ const Gallery = () => {
               exit={{ scale: 0.92, opacity: 0 }}
               transition={{ type: "spring", stiffness: 280, damping: 26 }}
             />
+
+            {/* Tombol Tutup */}
             <button
-              className="absolute top-5 right-5 w-10 h-10 rounded-full bg-white/10 text-white text-xl flex items-center justify-center border border-white/20 hover:bg-white/20 transition"
-              onClick={() => setFullscreen(false)}
+              className="absolute top-5 right-5 w-10 h-10 rounded-full bg-white/10 text-white flex items-center justify-center border border-white/20 hover:bg-white/20 transition"
+              onClick={(e) => { e.stopPropagation(); setFullscreen(false); }}
             >
-              ✕
+              <X size={18} />
+            </button>
+
+            {/* Tombol Download */}
+            <button
+              className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 text-white text-sm border border-white/20 hover:bg-white/20 active:scale-95 transition-all"
+              onClick={handleDownload}
+            >
+              <Download size={16} />
+              Download Foto
             </button>
           </motion.div>
         )}
