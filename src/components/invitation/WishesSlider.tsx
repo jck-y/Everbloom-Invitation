@@ -4,28 +4,27 @@ import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import type { RSVPEntry } from "./RSVPForm";
 
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxRnY-8EXgYPAI2BIjwlpoHrmsFUQSdEvefysNOlmgNUarG2cJBUWs1LDVlEG5ySKJH/exec"
+
 const WishesSlider = () => {
   const [wishes, setWishes] = useState<RSVPEntry[]>([]);
   const [current, setCurrent] = useState(0);
 
   const filteredWishes = wishes.filter((w) => w.ucapan?.trim().length > 0);
 
-  // 🔄 Fetch data dari Apps Script
   useEffect(() => {
     const fetchData = () => {
+      if (document.hidden) return;
       fetch(SCRIPT_URL)
         .then((res) => res.json())
         .then((data) => setWishes(data))
         .catch((err) => console.error("Fetch error:", err));
     };
 
-    fetchData(); // initial fetch
-
-    const interval = setInterval(fetchData, 5000); // auto update tiap 5 detik
+    fetchData();
+    const interval = setInterval(fetchData, 15000);
     return () => clearInterval(interval);
   }, []);
 
-  // 🔄 Auto slide
   useEffect(() => {
     if (filteredWishes.length <= 1) return;
     const interval = setInterval(() => {
@@ -36,7 +35,7 @@ const WishesSlider = () => {
 
   if (filteredWishes.length === 0) {
     return (
-      <section className="py-20 px-6 bg-floral-pattern">
+      <section id="messages" className="py-20 px-6 bg-floral-pattern">
         <div className="max-w-lg mx-auto text-center">
           <motion.h2
             className="text-3xl sm:text-4xl font-heading font-bold text-gradient-gold mb-6"
@@ -54,16 +53,11 @@ const WishesSlider = () => {
     );
   }
 
-  const goNext = () =>
-    setCurrent((prev) => (prev + 1) % filteredWishes.length);
-
-  const goPrev = () =>
-    setCurrent(
-      (prev) => (prev - 1 + filteredWishes.length) % filteredWishes.length
-    );
+  const goNext = () => setCurrent((prev) => (prev + 1) % filteredWishes.length);
+  const goPrev = () => setCurrent((prev) => (prev - 1 + filteredWishes.length) % filteredWishes.length);
 
   return (
-    <section className="py-20 px-6 bg-floral-pattern">
+    <section id="messages" className="py-20 px-6 bg-floral-pattern">
       <div className="max-w-lg mx-auto">
         <motion.h2
           className="text-3xl sm:text-4xl font-heading font-bold text-gradient-gold text-center mb-12"
@@ -115,7 +109,6 @@ const WishesSlider = () => {
           )}
         </div>
 
-        {/* Footer */}
         <motion.div
           className="mt-20 text-center"
           initial={{ opacity: 0 }}
@@ -123,11 +116,11 @@ const WishesSlider = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
         >
-          <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-6  text-[#fdfdfd]" />
-          <p className="text-xs text-muted-foreground/60 tracking-[0.3em] uppercase font-body  text-[#fdfdfd]">
+          <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-6" />
+          <p className="text-xs text-muted-foreground/60 tracking-[0.3em] uppercase font-body text-[#fdfdfd]">
             Everbloom Boldly Forward
           </p>
-          <p className="text-xs text-muted-foreground/40 mt-2 font-body  text-[#fdfdfd]">
+          <p className="text-xs text-muted-foreground/40 mt-2 font-body text-[#fdfdfd]">
             Graduation Class XII • 2026
           </p>
         </motion.div>
