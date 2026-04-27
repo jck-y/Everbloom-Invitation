@@ -66,15 +66,15 @@ const EventDetails = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.6 }}
         >
-          <a
-            href={mapsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-teal text-foreground font-display tracking-wider hover:brightness-110 transition-all shadow-lg shadow-teal/20 "
-          >
-            <Navigation className="w-4 h-4" />
-            Location Maps
-          </a>
+        <a
+          href={mapsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-[#ffb347] text-black font-display tracking-wider hover:bg-[#e6a03f] transition-all shadow-lg shadow-[#ffb347]/30"
+        >
+          <Navigation className="w-4 h-4" />
+          Location Maps
+        </a>
         </motion.div>
       </div>
     </section>

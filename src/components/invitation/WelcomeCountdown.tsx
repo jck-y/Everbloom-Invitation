@@ -1,13 +1,15 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { ChevronDown } from "lucide-react";
 
 const WelcomeCountdown = () => {
 
   const welcomeTitle = "WE INVITE YOU";
   const welcomeText = "Graduation Ceremony for the Class of 2026 Citra Kasih Senior High School Samarinda";
-  const eventDate = new Date("2026-05-26T15:00:00"); 
+  const eventDate = new Date("2026-05-26T15:00:00");
 
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [showScrollHint, setShowScrollHint] = useState(true);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -27,6 +29,16 @@ const WelcomeCountdown = () => {
     return () => clearInterval(timer);
   }, []);
 
+  // Sembunyikan scroll hint saat user mulai scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 40) setShowScrollHint(false);
+      else setShowScrollHint(true);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const timeUnits = [
     { label: "Day", value: timeLeft.days },
     { label: "Hour", value: timeLeft.hours },
@@ -35,7 +47,7 @@ const WelcomeCountdown = () => {
   ];
 
   return (
-   <section className="min-h-screen flex flex-col items-center justify-center px-6 py-20 bg-floral-pattern relative">
+    <section className="min-h-screen flex flex-col items-center justify-center px-6 py-20 bg-floral-pattern relative">
       <motion.div
         className="w-20 h-[1px] bg-gradient-to-r from-transparent via-gold to-transparent mb-8"
         initial={{ scaleX: 0 }}
@@ -85,6 +97,40 @@ const WelcomeCountdown = () => {
             </span>
           </div>
         ))}
+      </motion.div>
+
+{/* Scroll Down Hint */}
+      <motion.div
+        className="absolute bottom-8 inset-x-0 flex items-center justify-center cursor-pointer"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{
+          opacity: showScrollHint ? 1 : 0,
+          y: showScrollHint ? 0 : 10,
+        }}
+        transition={{ duration: 0.4 }}
+        onClick={() => window.scrollBy({ top: window.innerHeight, behavior: "smooth" })}
+      >
+        <motion.div
+          className="flex items-center gap-3 bg-black/30 backdrop-blur-sm border border-white/20 rounded-full px-6 py-3"
+          animate={{ y: [0, 5, 0] }}
+          transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+        >
+          {/* Panah kiri */}
+          <div className="flex flex-col items-center -space-y-2">
+            <ChevronDown className="w-3 h-3 text-accent" />
+            <ChevronDown className="w-3 h-3 text-accent" />
+          </div>
+
+          <span className="text-white/80 text-xs tracking-[0.2em] uppercase font-body">
+            Scroll Down
+          </span>
+
+          {/* Panah kanan */}
+          <div className="flex flex-col items-center -space-y-2">
+            <ChevronDown className="w-3 h-3 text-accent" />
+            <ChevronDown className="w-3 h-3 text-accent" />
+          </div>
+        </motion.div>
       </motion.div>
     </section>
   );
