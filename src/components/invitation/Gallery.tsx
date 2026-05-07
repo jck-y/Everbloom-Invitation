@@ -4,8 +4,8 @@ import { Expand, Download, X } from "lucide-react";
 
 const Gallery = () => {
   const photos = [
-    { preview: "/images/images1.webp", original: "/images/images1.png" },
     { preview: "/images/images9.webp", original: "/images/images9.png" },
+    { preview: "/images/images1.webp", original: "/images/images1.png" },
     { preview: "/images/images2.webp", original: "/images/images2.png" },
     { preview: "/images/images3.webp", original: "/images/images3.png" },
     { preview: "/images/images4.webp", original: "/images/images4.png" },
