@@ -12,9 +12,9 @@ const DressCodeAgenda = () => {
     { time: "", activity: "Welcome Remarks" },
     { time: "", activity: "Student Performances" },
     { time: "", activity: "Graduation Ceremony" },
-    { time: "", activity: "Awards for Students & Teachers" },
+    { time: "", activity: "Awarding" },
     { time: "", activity: "Group Photo" },
-    { time: "", activity: "Reception & Dinner" },
+    { time: "", activity: "Dinner" },
   ];
   // ========================================
 
