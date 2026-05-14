@@ -1,0 +1,17 @@
+{
+  "name": "Everbloom Invites",
+  "short_name": "Everbloom",
+  "description": "Graduation Class XII - Citra Kasih Samarinda 2026",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0d1f17",
+  "theme_color": "#0d1f17",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ]
+}
