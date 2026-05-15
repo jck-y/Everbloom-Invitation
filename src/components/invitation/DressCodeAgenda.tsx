@@ -3,7 +3,7 @@ import { Shirt, ListChecks } from "lucide-react";
 
 const DressCodeAgenda = () => {
   // ===== EDIT DRESSCODE DI SINI =====
-  const dressCode = "Formal / Semi-Formal";
+  const dressCode = "Formal / Formal";
   // ==================================
 
   // ===== EDIT RANGKAIAN ACARA DI SINI =====

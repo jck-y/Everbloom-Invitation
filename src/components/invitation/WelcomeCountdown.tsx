@@ -4,7 +4,7 @@ import { ChevronDown } from "lucide-react";
 
 const WelcomeCountdown = () => {
   const welcomeTitle = "WE INVITE YOU";
-  const welcomeText = "Graduation Ceremony for the Class of 2026 Citra Kasih Senior High School Samarinda";
+  const welcomeText = "Citra Kasih Samarinda Senior High School";
   const eventDate = new Date("2026-05-26T15:00:00");
 
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });

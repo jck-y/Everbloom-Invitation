@@ -6,6 +6,7 @@ interface OpeningScreenProps {
 
 const OpeningScreen = ({ onOpen }: OpeningScreenProps) => {
   const title = "GRADUATION CLASS XII";
+  // const title2 = "SENIOR HIGH SCHOOL";
   const greeting = "We are grateful to invite you to attend our graduation ceremony";
 
   return (
@@ -21,7 +22,18 @@ const OpeningScreen = ({ onOpen }: OpeningScreenProps) => {
         animate={{ scaleX: 1 }}
         transition={{ delay: 0.3, duration: 1 }}
       />
-
+      <motion.div
+        className="flex items-center justify-center mb-6"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.2, duration: 0.8 }}
+      >
+        <img
+          src="/src/assets/logo.png"
+          alt="Logo"
+          className="h-20 w-auto object-contain drop-shadow-lg"
+        />
+      </motion.div>
       <motion.p
         className="text-sm tracking-[0.35em] uppercase text-rose mb-4 font-body"
         initial={{ opacity: 0, y: 20 }}
@@ -38,6 +50,8 @@ const OpeningScreen = ({ onOpen }: OpeningScreenProps) => {
         transition={{ delay: 0.6, duration: 0.8 }}
       >
         {title}
+        {/* <p></p>
+        {title2} */}
       </motion.h1>
 
       <motion.div
